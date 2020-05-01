@@ -1,0 +1,455 @@
+Enabled checks:
+    clang-analyzer-apiModeling.StdCLibraryFunctions
+    clang-analyzer-apiModeling.TrustNonnull
+    clang-analyzer-apiModeling.google.GTest
+    clang-analyzer-apiModeling.llvm.CastValue
+    clang-analyzer-apiModeling.llvm.ReturnValue
+    clang-analyzer-core.CallAndMessage
+    clang-analyzer-core.DivideZero
+    clang-analyzer-core.DynamicTypePropagation
+    clang-analyzer-core.NonNullParamChecker
+    clang-analyzer-core.NonnilStringConstants
+    clang-analyzer-core.NullDereference
+    clang-analyzer-core.StackAddrEscapeBase
+    clang-analyzer-core.StackAddressEscape
+    clang-analyzer-core.UndefinedBinaryOperatorResult
+    clang-analyzer-core.VLASize
+    clang-analyzer-core.builtin.BuiltinFunctions
+    clang-analyzer-core.builtin.NoReturnFunctions
+    clang-analyzer-core.uninitialized.ArraySubscript
+    clang-analyzer-core.uninitialized.Assign
+    clang-analyzer-core.uninitialized.Branch
+    clang-analyzer-core.uninitialized.CapturedBlockVariable
+    clang-analyzer-core.uninitialized.UndefReturn
+    clang-analyzer-cplusplus.InnerPointer
+    clang-analyzer-cplusplus.Move
+    clang-analyzer-cplusplus.NewDelete
+    clang-analyzer-cplusplus.NewDeleteLeaks
+    clang-analyzer-cplusplus.PureVirtualCall
+    clang-analyzer-cplusplus.SelfAssignment
+    clang-analyzer-cplusplus.SmartPtr
+    clang-analyzer-cplusplus.VirtualCallModeling
+    clang-analyzer-deadcode.DeadStores
+    clang-analyzer-fuchsia.HandleChecker
+    clang-analyzer-nullability.NullPassedToNonnull
+    clang-analyzer-nullability.NullReturnedFromNonnull
+    clang-analyzer-nullability.NullabilityBase
+    clang-analyzer-nullability.NullableDereferenced
+    clang-analyzer-nullability.NullablePassedToNonnull
+    clang-analyzer-nullability.NullableReturnedFromNonnull
+    clang-analyzer-optin.cplusplus.UninitializedObject
+    clang-analyzer-optin.cplusplus.VirtualCall
+    clang-analyzer-optin.mpi.MPI-Checker
+    clang-analyzer-optin.osx.OSObjectCStyleCast
+    clang-analyzer-optin.osx.cocoa.localizability.EmptyLocalizationContextChecker
+    clang-analyzer-optin.osx.cocoa.localizability.NonLocalizedStringChecker
+    clang-analyzer-optin.performance.GCDAntipattern
+    clang-analyzer-optin.performance.Padding
+    clang-analyzer-optin.portability.UnixAPI
+    clang-analyzer-osx.API
+    clang-analyzer-osx.MIG
+    clang-analyzer-osx.NSOrCFErrorDerefChecker
+    clang-analyzer-osx.NumberObjectConversion
+    clang-analyzer-osx.OSObjectRetainCount
+    clang-analyzer-osx.ObjCProperty
+    clang-analyzer-osx.SecKeychainAPI
+    clang-analyzer-osx.cocoa.AtSync
+    clang-analyzer-osx.cocoa.AutoreleaseWrite
+    clang-analyzer-osx.cocoa.ClassRelease
+    clang-analyzer-osx.cocoa.Dealloc
+    clang-analyzer-osx.cocoa.IncompatibleMethodTypes
+    clang-analyzer-osx.cocoa.Loops
+    clang-analyzer-osx.cocoa.MissingSuperCall
+    clang-analyzer-osx.cocoa.NSAutoreleasePool
+    clang-analyzer-osx.cocoa.NSError
+    clang-analyzer-osx.cocoa.NilArg
+    clang-analyzer-osx.cocoa.NonNilReturnValue
+    clang-analyzer-osx.cocoa.ObjCGenerics
+    clang-analyzer-osx.cocoa.RetainCount
+    clang-analyzer-osx.cocoa.RetainCountBase
+    clang-analyzer-osx.cocoa.RunLoopAutoreleaseLeak
+    clang-analyzer-osx.cocoa.SelfInit
+    clang-analyzer-osx.cocoa.SuperDealloc
+    clang-analyzer-osx.cocoa.UnusedIvars
+    clang-analyzer-osx.cocoa.VariadicMethodTypes
+    clang-analyzer-osx.coreFoundation.CFError
+    clang-analyzer-osx.coreFoundation.CFNumber
+    clang-analyzer-osx.coreFoundation.CFRetainRelease
+    clang-analyzer-osx.coreFoundation.containers.OutOfBounds
+    clang-analyzer-osx.coreFoundation.containers.PointerSizedValues
+    clang-analyzer-security.FloatLoopCounter
+    clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling
+    clang-analyzer-security.insecureAPI.SecuritySyntaxChecker
+    clang-analyzer-security.insecureAPI.UncheckedReturn
+    clang-analyzer-security.insecureAPI.bcmp
+    clang-analyzer-security.insecureAPI.bcopy
+    clang-analyzer-security.insecureAPI.bzero
+    clang-analyzer-security.insecureAPI.decodeValueOfObjCType
+    clang-analyzer-security.insecureAPI.getpw
+    clang-analyzer-security.insecureAPI.gets
+    clang-analyzer-security.insecureAPI.mkstemp
+    clang-analyzer-security.insecureAPI.mktemp
+    clang-analyzer-security.insecureAPI.rand
+    clang-analyzer-security.insecureAPI.strcpy
+    clang-analyzer-security.insecureAPI.vfork
+    clang-analyzer-unix.API
+    clang-analyzer-unix.DynamicMemoryModeling
+    clang-analyzer-unix.Malloc
+    clang-analyzer-unix.MallocSizeof
+    clang-analyzer-unix.MismatchedDeallocator
+    clang-analyzer-unix.Vfork
+    clang-analyzer-unix.cstring.BadSizeArg
+    clang-analyzer-unix.cstring.CStringModeling
+    clang-analyzer-unix.cstring.NullArg
+    clang-analyzer-valist.CopyToSelf
+    clang-analyzer-valist.Uninitialized
+    clang-analyzer-valist.Unterminated
+    clang-analyzer-valist.ValistBase
+    misc-unused-alias-decls
+    misc-unused-parameters
+    misc-unused-using-decls
+    modernize-avoid-bind
+    modernize-avoid-c-arrays
+    modernize-concat-nested-namespaces
+    modernize-deprecated-headers
+    modernize-deprecated-ios-base-aliases
+    modernize-loop-convert
+    modernize-make-shared
+    modernize-make-unique
+    modernize-pass-by-value
+    modernize-raw-string-literal
+    modernize-redundant-void-arg
+    modernize-replace-auto-ptr
+    modernize-replace-random-shuffle
+    modernize-return-braced-init-list
+    modernize-shrink-to-fit
+    modernize-unary-static-assert
+    modernize-use-auto
+    modernize-use-bool-literals
+    modernize-use-default-member-init
+    modernize-use-emplace
+    modernize-use-equals-default
+    modernize-use-equals-delete
+    modernize-use-nodiscard
+    modernize-use-noexcept
+    modernize-use-nullptr
+    modernize-use-transparent-functors
+    modernize-use-uncaught-exceptions
+    modernize-use-using
+
+clang-apply-replacements version 10.0.0
+clang-tidy -export-fixes /tmp/tmpzjbx6mc4/tmp1iec6n8c.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielcpu.cc
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:22:10: warning: inclusion of deprecated C++ header 'stdlib.h'; consider using 'cstdlib' instead [modernize-deprecated-headers]
+#include <stdlib.h>
+         ^~~~~~~~~~
+         <cstdlib>
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:24:10: warning: inclusion of deprecated C++ header 'stdio.h'; consider using 'cstdio' instead [modernize-deprecated-headers]
+#include <stdio.h>
+         ^~~~~~~~~
+         <cstdio>
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:26:10: warning: inclusion of deprecated C++ header 'time.h'; consider using 'ctime' instead [modernize-deprecated-headers]
+#include <time.h>
+         ^~~~~~~~
+         <ctime>
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:28:10: warning: inclusion of deprecated C++ header 'string.h'; consider using 'cstring' instead [modernize-deprecated-headers]
+#include <string.h>
+         ^~~~~~~~~~
+         <cstring>
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:56:42: warning: use nullptr [modernize-use-nullptr]
+        params.find<bool>("memmgr.vtop", 0, found);
+                                         ^
+                                         nullptr
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:119:9: warning: use nullptr [modernize-use-nullptr]
+    if (NULL != (memmgr = loadUserSubComponent<ArielMemoryManager>("memmgr"))) {
+        ^~~~
+        nullptr
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:131:13: warning: use nullptr [modernize-use-nullptr]
+        if (NULL == memmgr) output->fatal(CALL_INFO, -1, "Failed to load memory manager: %s\n", memorymanager.c_str());
+            ^~~~
+            nullptr
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:141:9: warning: Value stored to 'gpu_e' during its initialization is never read [clang-analyzer-deadcode.DeadStores]
+    int gpu_e = (uint32_t) params.find<uint32_t>("gpu_enabled", 0);
+        ^
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:141:9: note: Value stored to 'gpu_e' during its initialization is never read
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:210:15: warning: Value stored to 'link_buffer' during its initialization is never read [clang-analyzer-deadcode.DeadStores]
+        char* link_buffer = (char*) malloc(sizeof(char) * 256);
+              ^
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:210:15: note: Value stored to 'link_buffer' during its initialization is never read
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:268:35: warning: parameter 'cycle' is unused [misc-unused-parameters]
+bool ArielCPU::tick( SST::Cycle_t cycle) {
+                                  ^~~~~
+                                   /*cycle*/
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:293:11: warning: use '= default' to define a trivial destructor [modernize-use-equals-default]
+ArielCPU::~ArielCPU() { }
+          ^           ~~~
+                      = default;
+clang-tidy -export-fixes /tmp/tmpzjbx6mc4/tmpyp0uxumi.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielevent.cc
+/home/sabbir/sst-elements-org/ariel/arielevent.cc:23:13: warning: use '= default' to define a trivial default constructor [modernize-use-equals-default]
+ArielEvent::ArielEvent() {
+            ^            ~
+                         = default;
+/home/sabbir/sst-elements-org/ariel/arielevent.cc:26:13: warning: use '= default' to define a trivial destructor [modernize-use-equals-default]
+ArielEvent::~ArielEvent() {
+            ^             ~
+                          = default;
+clang-tidy -export-fixes /tmp/tmpzjbx6mc4/tmpin8ym6pf.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arieltexttracegen.cc
+clang-tidy -export-fixes /tmp/tmpzjbx6mc4/tmpahhwcfrn.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielmemmgr_simple.cc
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_simple.cc:17:10: warning: inclusion of deprecated C++ header 'stdio.h'; consider using 'cstdio' instead [modernize-deprecated-headers]
+#include <stdio.h>
+         ^~~~~~~~~
+         <cstdio>
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_simple.cc:48:27: warning: use '= default' to define a trivial destructor [modernize-use-equals-default]
+ArielMemoryManagerSimple::~ArielMemoryManagerSimple() {
+                          ^                           ~
+                                                      = default;
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_simple.cc:52:77: warning: parameter 'level' is unused [misc-unused-parameters]
+void ArielMemoryManagerSimple::allocate(const uint64_t size, const uint32_t level, const uint64_t virtualAddress) {
+                                                                            ^~~~~
+                                                                             /*level*/
+clang-tidy -export-fixes /tmp/tmpzjbx6mc4/tmpz7lfj0ei.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:17:10: warning: inclusion of deprecated C++ header 'stdio.h'; consider using 'cstdio' instead [modernize-deprecated-headers]
+#include <stdio.h>
+         ^~~~~~~~~
+         <cstdio>
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:86:27: warning: use '= default' to define a trivial destructor [modernize-use-equals-default]
+ArielMemoryManagerMalloc::~ArielMemoryManagerMalloc() {
+                          ^                           ~
+                                                      = default;
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:175:136: warning: parameter 'instructionPointer' is unused [misc-unused-parameters]
+bool ArielMemoryManagerMalloc::allocateMalloc(const uint64_t size, const uint32_t level, const uint64_t virtualAddress, const uint64_t instructionPointer, const uint32_t thread) {
+                                                                                                                                       ^~~~~~~~~~~~~~~~~~
+                                                                                                                                        /*instructionPointer*/
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:175:171: warning: parameter 'thread' is unused [misc-unused-parameters]
+bool ArielMemoryManagerMalloc::allocateMalloc(const uint64_t size, const uint32_t level, const uint64_t virtualAddress, const uint64_t instructionPointer, const uint32_t thread) {
+                                                                                                                                                                          ^~~~~~
+                                                                                                                                                                           /*thread*/
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:179:5: warning: use auto when declaring iterators [modernize-use-auto]
+    std::map<uint64_t, uint64_t>::iterator it = mallocTranslations.upper_bound(virtualAddress);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:202:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    std::unordered_set<uint64_t>* virtualPages = new std::unordered_set<uint64_t>;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:216:5: warning: 9th function call argument is an uninitialized value [clang-analyzer-core.CallAndMessage]
+    output->verbose(CALL_INFO, 4, 0, "Malloc mapped %" PRIu64 " to [%" PRIu64 ", %" PRIu64 "] (%" PRIu64 " pages).\n", virtualAddress, firstPhysAddr, lastPhysAddr, pageCount);
+    ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:180:9: note: Assuming the condition is false
+    if (it == mallocTranslations.begin()) it = mallocTranslations.end();
+        ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:180:5: note: Taking false branch
+    if (it == mallocTranslations.begin()) it = mallocTranslations.end();
+    ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:181:14: note: Assuming the condition is false
+    else if (!mallocTranslations.empty()) it--;
+             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:181:10: note: Taking false branch
+    else if (!mallocTranslations.empty()) it--;
+         ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:183:9: note: Assuming the condition is false
+    if (it != mallocTranslations.end() && it->first <= virtualAddress) {
+        ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:183:40: note: Left side of '&&' is false
+    if (it != mallocTranslations.end() && it->first <= virtualAddress) {
+                                       ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:183:5: note: Taking false branch
+    if (it != mallocTranslations.end() && it->first <= virtualAddress) {
+    ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:193:9: note: Assuming the condition is false
+    if (size % pageSizes[level] != 0) pageCount++;
+        ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:193:5: note: Taking false branch
+    if (size % pageSizes[level] != 0) pageCount++;
+    ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:196:9: note: Assuming the condition is false
+    if (freePages[level]->size() < pageCount) {
+        ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:196:5: note: Taking false branch
+    if (freePages[level]->size() < pageCount) {
+    ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:204:29: note: 'lastPhysAddr' declared without an initial value
+    uint64_t firstPhysAddr, lastPhysAddr;
+                            ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:206:26: note: Assuming 'i' is equal to 'pageCount'
+    for (uint64_t i = 0; i != pageCount; i++) {
+                         ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:206:5: note: Loop condition is false. Execution continues on line 216
+    for (uint64_t i = 0; i != pageCount; i++) {
+    ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:216:5: note: 9th function call argument is an uninitialized value
+    output->verbose(CALL_INFO, 4, 0, "Malloc mapped %" PRIu64 " to [%" PRIu64 ", %" PRIu64 "] (%" PRIu64 " pages).\n", virtualAddress, firstPhysAddr, lastPhysAddr, pageCount);
+    ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:230:5: warning: use auto when declaring iterators [modernize-use-auto]
+    std::map<uint64_t, mallocInfo>::iterator it = mallocInformation.find(virtualAddress);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:237:5: warning: use range-based for loop instead [modernize-loop-convert]
+    for (std::unordered_set<uint64_t>::iterator vaIt = myKeys->begin(); vaIt != myKeys->end(); vaIt++) {
+    ^   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        (unsigned long myKey : *myKeys)
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:237:10: warning: use auto when declaring iterators [modernize-use-auto]
+    for (std::unordered_set<uint64_t>::iterator vaIt = myKeys->begin(); vaIt != myKeys->end(); vaIt++) {
+         ^
+note: this fix will not be applied because it overlaps with another fix
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:258:5: warning: use auto when initializing with a cast to avoid duplicating the type name [modernize-use-auto]
+    uint64_t physAddr = (uint64_t) -1;
+    ^~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:272:9: warning: use auto when declaring iterators [modernize-use-auto]
+        std::map<uint64_t, uint64_t>::iterator it = mallocTranslations.upper_bound(virtAddr);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        auto
+clang-tidy -export-fixes /tmp/tmpzjbx6mc4/tmp___xmkbm.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielcore.cc
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:115:12: warning: use nullptr [modernize-use-nullptr]
+        if(NULL == traceGen) {
+           ^~~~
+           nullptr
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:120:9: warning: Called C++ object pointer is null [clang-analyzer-core.CallAndMessage]
+        traceGen->setCoreID(coreID);
+        ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:57:21: note: Assuming the condition is false
+    writePayloads = params.find<int>("writepayloadtrace") == 0 ? false : true;
+                    ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:57:21: note: '?' condition is false
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:108:22: note: Calling 'operator!=<char, std::char_traits<char>, std::allocator<char>>'
+    enableTracing = ("" != traceGenName);
+                     ^
+/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/basic_string.h:6071:16: note: Calling 'operator==<char, std::char_traits<char>, std::allocator<char>>'
+    { return !(__lhs == __rhs); }
+               ^
+/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/basic_string.h:6033:14: note: Assuming the condition is false
+    { return __rhs.compare(__lhs) == 0; }
+             ^
+/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/basic_string.h:6033:7: note: Returning zero, which participates in a condition later
+    { return __rhs.compare(__lhs) == 0; }
+      ^
+/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/basic_string.h:6071:16: note: Returning from 'operator==<char, std::char_traits<char>, std::allocator<char>>'
+    { return !(__lhs == __rhs); }
+               ^
+/usr/lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/bits/basic_string.h:6071:7: note: Returning the value 1, which participates in a condition later
+    { return !(__lhs == __rhs); }
+      ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:108:22: note: Returning from 'operator!=<char, std::char_traits<char>, std::allocator<char>>'
+    enableTracing = ("" != traceGenName);
+                     ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:111:8: note: Field 'enableTracing' is true
+    if(enableTracing) {
+       ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:111:5: note: Taking true branch
+    if(enableTracing) {
+    ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:113:9: note: Value assigned to field 'traceGen'
+        traceGen = dynamic_cast<ArielTraceGenerator*>( loadModule(traceGenName, interfaceParams) );
+        ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:115:12: note: Assuming NULL is equal to field 'traceGen'
+        if(NULL == traceGen) {
+           ^
+/usr/local/lib/clang/10.0.0/include/stddef.h:84:18: note: expanded from macro 'NULL'
+#    define NULL __null
+                 ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:115:9: note: Taking true branch
+        if(NULL == traceGen) {
+        ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:120:9: note: Called C++ object pointer is null
+        traceGen->setCoreID(coreID);
+        ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:127:8: warning: use nullptr [modernize-use-nullptr]
+    if(NULL != cacheLink) {
+       ^~~~
+       nullptr
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:162:9: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+        SimpleMem::Request *req = new SimpleMem::Request(SimpleMem::Request::Read, address, length);
+        ^~~~~~~~~~~~~~~~~~
+        auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:188:9: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+        SimpleMem::Request *req = new SimpleMem::Request(SimpleMem::Request::Write, address, length);
+        ^~~~~~~~~~~~~~~~~~
+        auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:232:28: warning: parameter 'virtAddress' is unused [misc-unused-parameters]
+            const uint64_t virtAddress, const uint32_t length) {
+                           ^~~~~~~~~~~
+                            /*virtAddress*/
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:236:9: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+        SimpleMem::Request *req = new SimpleMem::Request(SimpleMem::Request::FlushLineInv, address, length);
+        ^~~~~~~~~~~~~~~~~~
+        auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:513:20: warning: use nullptr [modernize-use-nullptr]
+        traceGen = NULL;
+                   ^~~~
+                   nullptr
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:627:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielSwitchPoolEvent* ev = new ArielSwitchPoolEvent(newPool);
+    ^~~~~~~~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:634:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielNoOpEvent* ev = new ArielNoOpEvent();
+    ^~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:641:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielReadEvent* ev = new ArielReadEvent(address, length);
+    ^~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:648:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielAllocateEvent* ev = new ArielAllocateEvent(vAddr, length, level, instPtr);
+    ^~~~~~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:656:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielMmapEvent* ev = new ArielMmapEvent(fileID, vAddr, length, level, instPtr);
+    ^~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:664:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielFreeEvent* ev = new ArielFreeEvent(vAddr);
+    ^~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:671:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielWriteEvent* ev = new ArielWriteEvent(address, length, payload);
+    ^~~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:678:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielFlushEvent *ev = new ArielFlushEvent(vAddr, cacheLineSize);
+    ^~~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:685:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielFenceEvent *ev = new ArielFenceEvent();
+    ^~~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:692:5: warning: use auto when initializing with new to avoid duplicating the type name [modernize-use-auto]
+    ArielExitEvent* xEv = new ArielExitEvent();
+    ^~~~~~~~~~~~~~
+    auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:1024:78: warning: use nullptr [modernize-use-nullptr]
+            commitWriteEvent(physAddr, writeAddress, (uint32_t) writeLength, NULL);
+                                                                             ^~~~
+                                                                             nullptr
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:1065:75: warning: use nullptr [modernize-use-nullptr]
+            commitWriteEvent(physLeftAddr, leftAddr, (uint32_t) leftSize, NULL);
+                                                                          ^~~~
+                                                                          nullptr
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:1066:78: warning: use nullptr [modernize-use-nullptr]
+            commitWriteEvent(physRightAddr, rightAddr, (uint32_t) rightSize, NULL);
+                                                                             ^~~~
+                                                                             nullptr
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:1090:11: warning: use auto when initializing with a cast to avoid duplicating the type name [modernize-use-auto]
+    const uint64_t virtualAddress = (uint64_t) flEv->getVirtualAddress();
+          ^~~~~~~~
+          auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:1091:11: warning: use auto when initializing with a cast to avoid duplicating the type name [modernize-use-auto]
+    const uint64_t readLength = (uint64_t) flEv->getLength();
+          ^~~~~~~~
+          auto
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:1097:51: warning: parameter 'fEv' is unused [misc-unused-parameters]
+void ArielCore::handleFenceEvent(ArielFenceEvent *fEv) {
+                                                  ^~~
+                                                   /*fEv*/
+Applying fixes ...
+Enabled checks:
+    modernize-use-override
+
+clang-apply-replacements version 10.0.0
+clang-tidy -checks=-*,modernize-use-override -export-fixes /tmp/tmp16kd0zpy/tmptct2eab7.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielcore.cc
+clang-tidy -checks=-*,modernize-use-override -export-fixes /tmp/tmp16kd0zpy/tmp3x4789jb.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielevent.cc
+clang-tidy -checks=-*,modernize-use-override -export-fixes /tmp/tmp16kd0zpy/tmp8yva2exe.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc
+clang-tidy -checks=-*,modernize-use-override -export-fixes /tmp/tmp16kd0zpy/tmpxmovk3ka.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielmemmgr_simple.cc
+clang-tidy -checks=-*,modernize-use-override -export-fixes /tmp/tmp16kd0zpy/tmpb7d9rrt1.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arielcpu.cc
+clang-tidy -checks=-*,modernize-use-override -export-fixes /tmp/tmp16kd0zpy/tmppmqj3xbn.yaml -p=/home/sabbir/sst-elements-org/ariel/build /home/sabbir/sst-elements-org/ariel/arieltexttracegen.cc
+Applying fixes ...

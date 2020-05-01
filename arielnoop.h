@@ -13,7 +13,6 @@
 // information, see the LICENSE file in the top level directory of the
 // distribution.
 
-
 #ifndef _H_SST_ARIEL_NOOP_EVENT
 #define _H_SST_ARIEL_NOOP_EVENT
 
@@ -26,17 +25,14 @@ namespace ArielComponent {
 
 class ArielNoOpEvent : public ArielEvent {
 
-    public:
-        ArielNoOpEvent() {}
-        ~ArielNoOpEvent() {}
+public:
+  ArielNoOpEvent() {}
+  ~ArielNoOpEvent() {}
 
-        ArielEventType getEventType() const {
-                return NOOP;
-        }
-
+  ArielEventType getEventType() const { return NOOP; }
 };
 
-}
-}
+} // namespace ArielComponent
+} // namespace SST
 
 #endif

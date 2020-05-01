@@ -13,7 +13,6 @@
 // information, see the LICENSE file in the top level directory of the
 // distribution.
 
-
 #ifndef _H_ARIEL_CLIENT_API
 #define _H_ARIEL_CLIENT_API
 

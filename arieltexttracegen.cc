@@ -14,41 +14,35 @@
 // distribution.
 #include <sst/core/sst_config.h>
 
-
 #include "arieltexttracegen.h"
 
 using namespace SST::ArielComponent;
 
-ArielTextTraceGenerator::ArielTextTraceGenerator(Params& params) :
-    ArielTraceGenerator() {
+ArielTextTraceGenerator::ArielTextTraceGenerator(Params &params)
+    : ArielTraceGenerator() {
 
-    tracePrefix = params.find<std::string>("trace_prefix", "ariel-core");
-    coreID = 0;
+  tracePrefix = params.find<std::string>("trace_prefix", "ariel-core");
+  coreID = 0;
 }
 
-ArielTextTraceGenerator::~ArielTextTraceGenerator() {
-    fclose(textFile);
-}
+ArielTextTraceGenerator::~ArielTextTraceGenerator() { fclose(textFile); }
 
 void ArielTextTraceGenerator::publishEntry(const uint64_t picoS,
-    const uint64_t physAddr, const uint32_t reqLength,
-    const ArielTraceEntryOperation op) {
+                                           const uint64_t physAddr,
+                                           const uint32_t reqLength,
+                                           const ArielTraceEntryOperation op) {
 
-    fprintf(textFile, "%" PRIu64 " %s %" PRIu64 " %" PRIu32 "\n",
-            picoS,
-            (op == READ) ? "R" : "W",
-            physAddr,
-            reqLength);
+  fprintf(textFile, "%" PRIu64 " %s %" PRIu64 " %" PRIu32 "\n", picoS,
+          (op == READ) ? "R" : "W", physAddr, reqLength);
 }
 
 void ArielTextTraceGenerator::setCoreID(const uint32_t core) {
-    coreID = core;
+  coreID = core;
 
-    char* tracePath = (char*) malloc(sizeof(char) * PATH_MAX);
-    sprintf(tracePath, "%s-%" PRIu32 ".trace", tracePrefix.c_str(), core);
+  char *tracePath = (char *)malloc(sizeof(char) * PATH_MAX);
+  sprintf(tracePath, "%s-%" PRIu32 ".trace", tracePrefix.c_str(), core);
 
-    textFile = fopen(tracePath, "wt");
+  textFile = fopen(tracePath, "wt");
 
-    free(tracePath);
+  free(tracePath);
 }
-

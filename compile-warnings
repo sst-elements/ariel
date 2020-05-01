@@ -1,0 +1,308 @@
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.cc:19:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.h:31:
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:134:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:141:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:146:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:152:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:158:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:161:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:164:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:167:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:172:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.cc:19:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.h:32:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.h:38:
+/home/sabbir/sst-elements-org/ariel/arielallocev.h:51:9: warning: field 'FileID' will be initialized after field 'virtualAddress' [-Wreorder-ctor]
+      : FileID(fileID), virtualAddress(vAddr), allocateLength(len), level(lev),
+        ^
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.cc:19:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.h:32:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.h:44:
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:47:40: warning: unused parameter 'pool' [-Wunused-parameter]
+  virtual void setDefaultPool(uint32_t pool) {}
+                                       ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:55:46: warning: unused parameter 'size' [-Wunused-parameter]
+  virtual bool allocateMalloc(const uint64_t size, const uint32_t level,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:55:67: warning: unused parameter 'level' [-Wunused-parameter]
+  virtual bool allocateMalloc(const uint64_t size, const uint32_t level,
+                                                                  ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:56:46: warning: unused parameter 'virtualAddress' [-Wunused-parameter]
+                              const uint64_t virtualAddress,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:57:46: warning: unused parameter 'instructionPointer' [-Wunused-parameter]
+                              const uint64_t instructionPointer,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:58:46: warning: unused parameter 'thread' [-Wunused-parameter]
+                              const uint32_t thread) {
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:66:42: warning: unused parameter 'vAddr' [-Wunused-parameter]
+  virtual void freeMalloc(const uint64_t vAddr) {
+                                         ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:72:44: warning: unused parameter 'size' [-Wunused-parameter]
+  virtual bool allocateMMAP(const uint64_t size, const uint32_t level,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:72:65: warning: unused parameter 'level' [-Wunused-parameter]
+  virtual bool allocateMMAP(const uint64_t size, const uint32_t level,
+                                                                ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:73:44: warning: unused parameter 'virtualAddress' [-Wunused-parameter]
+                            const uint64_t virtualAddress,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:74:44: warning: unused parameter 'instructionPointer' [-Wunused-parameter]
+                            const uint64_t instructionPointer,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:75:44: warning: unused parameter 'file' [-Wunused-parameter]
+                            const uint32_t file, const uint32_t thread) {
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:75:65: warning: unused parameter 'thread' [-Wunused-parameter]
+                            const uint32_t file, const uint32_t thread) {
+                                                                ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:82:40: warning: unused parameter 'file' [-Wunused-parameter]
+  virtual void freeMMAP(const uint32_t file) {
+                                       ^
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.cc:19:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.h:32:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.h:48:
+/home/sabbir/sst-elements-org/ariel/arielwriteev.h:34:23: warning: comparison of integers of different signs: 'int' and 'uint32_t' (aka 'unsigned int') [-Wsign-compare]
+    for (int i = 0; i < length; ++i) {
+                    ~ ^ ~~~~~~
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.cc:19:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcpu.h:33:
+/home/sabbir/sst-elements-org/ariel/arielfrontend.h:45:43: warning: unused parameter 'params' [-Wunused-parameter]
+  ArielFrontend(ComponentId_t id, Params &params, uint32_t coreCount,
+                                          ^
+/home/sabbir/sst-elements-org/ariel/arielfrontend.h:45:60: warning: unused parameter 'coreCount' [-Wunused-parameter]
+  ArielFrontend(ComponentId_t id, Params &params, uint32_t coreCount,
+                                                           ^
+/home/sabbir/sst-elements-org/ariel/arielfrontend.h:46:26: warning: unused parameter 'maxCoreQueueLen' [-Wunused-parameter]
+                uint32_t maxCoreQueueLen, uint32_t defMemPool)
+                         ^
+/home/sabbir/sst-elements-org/ariel/arielfrontend.h:46:52: warning: unused parameter 'defMemPool' [-Wunused-parameter]
+                uint32_t maxCoreQueueLen, uint32_t defMemPool)
+                                                   ^
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:296:11: warning: unused variable 'link_buffer' [-Wunused-variable]
+    char *link_buffer = (char *)malloc(sizeof(char) * 256);
+          ^
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:203:7: warning: unused variable 'gpu_e' [-Wunused-variable]
+  int gpu_e = (uint32_t)params.find<uint32_t>("gpu_enabled", 0);
+      ^
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:278:42: warning: comparison of integers of different signs: 'int' and 'unsigned int' [-Wsign-compare]
+    if (mem->getMaxPopulatedSlotNumber() != core_count - 1)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~~~~~~~~~~~~~
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:286:23: warning: comparison of integers of different signs: 'int' and 'uint32_t' (aka 'unsigned int') [-Wsign-compare]
+    for (int i = 0; i < core_count; i++) {
+                    ~ ^ ~~~~~~~~~~
+/home/sabbir/sst-elements-org/ariel/arielcpu.cc:297:23: warning: comparison of integers of different signs: 'int' and 'uint32_t' (aka 'unsigned int') [-Wsign-compare]
+    for (int i = 0; i < core_count; i++) {
+                    ~ ^ ~~~~~~~~~~
+34 warnings generated.
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.cc:16:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.h:38:
+/home/sabbir/sst-elements-org/ariel/arielallocev.h:51:9: warning: field 'FileID' will be initialized after field 'virtualAddress' [-Wreorder-ctor]
+      : FileID(fileID), virtualAddress(vAddr), allocateLength(len), level(lev),
+        ^
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.cc:16:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.h:44:
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:47:40: warning: unused parameter 'pool' [-Wunused-parameter]
+  virtual void setDefaultPool(uint32_t pool) {}
+                                       ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:55:46: warning: unused parameter 'size' [-Wunused-parameter]
+  virtual bool allocateMalloc(const uint64_t size, const uint32_t level,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:55:67: warning: unused parameter 'level' [-Wunused-parameter]
+  virtual bool allocateMalloc(const uint64_t size, const uint32_t level,
+                                                                  ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:56:46: warning: unused parameter 'virtualAddress' [-Wunused-parameter]
+                              const uint64_t virtualAddress,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:57:46: warning: unused parameter 'instructionPointer' [-Wunused-parameter]
+                              const uint64_t instructionPointer,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:58:46: warning: unused parameter 'thread' [-Wunused-parameter]
+                              const uint32_t thread) {
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:66:42: warning: unused parameter 'vAddr' [-Wunused-parameter]
+  virtual void freeMalloc(const uint64_t vAddr) {
+                                         ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:72:44: warning: unused parameter 'size' [-Wunused-parameter]
+  virtual bool allocateMMAP(const uint64_t size, const uint32_t level,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:72:65: warning: unused parameter 'level' [-Wunused-parameter]
+  virtual bool allocateMMAP(const uint64_t size, const uint32_t level,
+                                                                ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:73:44: warning: unused parameter 'virtualAddress' [-Wunused-parameter]
+                            const uint64_t virtualAddress,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:74:44: warning: unused parameter 'instructionPointer' [-Wunused-parameter]
+                            const uint64_t instructionPointer,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:75:44: warning: unused parameter 'file' [-Wunused-parameter]
+                            const uint32_t file, const uint32_t thread) {
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:75:65: warning: unused parameter 'thread' [-Wunused-parameter]
+                            const uint32_t file, const uint32_t thread) {
+                                                                ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:82:40: warning: unused parameter 'file' [-Wunused-parameter]
+  virtual void freeMMAP(const uint32_t file) {
+                                       ^
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.cc:16:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.h:48:
+/home/sabbir/sst-elements-org/ariel/arielwriteev.h:34:23: warning: comparison of integers of different signs: 'int' and 'uint32_t' (aka 'unsigned int') [-Wsign-compare]
+    for (int i = 0; i < length; ++i) {
+                    ~ ^ ~~~~~~
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.cc:16:
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.h:50:
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:134:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:141:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:146:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:152:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:158:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:161:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:164:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:167:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/ariel_shmem.h:172:5: warning: anonymous types declared in an anonymous union are an extension [-Wnested-anon-types]
+    struct {
+    ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:42:7: warning: field 'perform_checks' will be initialized after field 'verbosity' [-Wreorder-ctor]
+      perform_checks(perform_address_checks),
+      ^
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:224:56: warning: format specifies type 'void *' but the argument has type 'uint64_t' (aka 'unsigned long') [-Wformat]
+                        length, payloadString.c_str(), virtAddress);
+                                                       ^~~~~~~~~~~
+/home/sabbir/sst-elements-org/ariel/arielcore.cc:215:27: warning: comparison of integers of different signs: 'int' and 'const uint32_t' (aka 'const unsigned int') [-Wsign-compare]
+        for (int i = 0; i < length; ++i) {
+                        ~ ^ ~~~~~~
+In file included from /home/sabbir/sst-elements-org/ariel/arielcore.cc:16:
+/home/sabbir/sst-elements-org/ariel/arielcore.h:267:12: warning: private field 'pending_gpu_transaction_count' is not used [-Wunused-private-field]
+  uint32_t pending_gpu_transaction_count;
+           ^
+29 warnings generated.
+In file included from /home/sabbir/sst-elements-org/ariel/arielmemmgr_simple.cc:19:
+In file included from /home/sabbir/sst-elements-org/ariel/arielmemmgr_simple.h:26:
+In file included from /home/sabbir/sst-elements-org/ariel/arielmemmgr_cache.h:27:
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:47:40: warning: unused parameter 'pool' [-Wunused-parameter]
+  virtual void setDefaultPool(uint32_t pool) {}
+                                       ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:55:46: warning: unused parameter 'size' [-Wunused-parameter]
+  virtual bool allocateMalloc(const uint64_t size, const uint32_t level,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:55:67: warning: unused parameter 'level' [-Wunused-parameter]
+  virtual bool allocateMalloc(const uint64_t size, const uint32_t level,
+                                                                  ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:56:46: warning: unused parameter 'virtualAddress' [-Wunused-parameter]
+                              const uint64_t virtualAddress,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:57:46: warning: unused parameter 'instructionPointer' [-Wunused-parameter]
+                              const uint64_t instructionPointer,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:58:46: warning: unused parameter 'thread' [-Wunused-parameter]
+                              const uint32_t thread) {
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:66:42: warning: unused parameter 'vAddr' [-Wunused-parameter]
+  virtual void freeMalloc(const uint64_t vAddr) {
+                                         ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:72:44: warning: unused parameter 'size' [-Wunused-parameter]
+  virtual bool allocateMMAP(const uint64_t size, const uint32_t level,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:72:65: warning: unused parameter 'level' [-Wunused-parameter]
+  virtual bool allocateMMAP(const uint64_t size, const uint32_t level,
+                                                                ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:73:44: warning: unused parameter 'virtualAddress' [-Wunused-parameter]
+                            const uint64_t virtualAddress,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:74:44: warning: unused parameter 'instructionPointer' [-Wunused-parameter]
+                            const uint64_t instructionPointer,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:75:44: warning: unused parameter 'file' [-Wunused-parameter]
+                            const uint32_t file, const uint32_t thread) {
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:75:65: warning: unused parameter 'thread' [-Wunused-parameter]
+                            const uint32_t file, const uint32_t thread) {
+                                                                ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:82:40: warning: unused parameter 'file' [-Wunused-parameter]
+  virtual void freeMMAP(const uint32_t file) {
+                                       ^
+14 warnings generated.
+In file included from /home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:19:
+In file included from /home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.h:22:
+In file included from /home/sabbir/sst-elements-org/ariel/arielmemmgr_cache.h:27:
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:47:40: warning: unused parameter 'pool' [-Wunused-parameter]
+  virtual void setDefaultPool(uint32_t pool) {}
+                                       ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:55:46: warning: unused parameter 'size' [-Wunused-parameter]
+  virtual bool allocateMalloc(const uint64_t size, const uint32_t level,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:55:67: warning: unused parameter 'level' [-Wunused-parameter]
+  virtual bool allocateMalloc(const uint64_t size, const uint32_t level,
+                                                                  ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:56:46: warning: unused parameter 'virtualAddress' [-Wunused-parameter]
+                              const uint64_t virtualAddress,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:57:46: warning: unused parameter 'instructionPointer' [-Wunused-parameter]
+                              const uint64_t instructionPointer,
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:58:46: warning: unused parameter 'thread' [-Wunused-parameter]
+                              const uint32_t thread) {
+                                             ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:66:42: warning: unused parameter 'vAddr' [-Wunused-parameter]
+  virtual void freeMalloc(const uint64_t vAddr) {
+                                         ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:72:44: warning: unused parameter 'size' [-Wunused-parameter]
+  virtual bool allocateMMAP(const uint64_t size, const uint32_t level,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:72:65: warning: unused parameter 'level' [-Wunused-parameter]
+  virtual bool allocateMMAP(const uint64_t size, const uint32_t level,
+                                                                ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:73:44: warning: unused parameter 'virtualAddress' [-Wunused-parameter]
+                            const uint64_t virtualAddress,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:74:44: warning: unused parameter 'instructionPointer' [-Wunused-parameter]
+                            const uint64_t instructionPointer,
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:75:44: warning: unused parameter 'file' [-Wunused-parameter]
+                            const uint32_t file, const uint32_t thread) {
+                                           ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:75:65: warning: unused parameter 'thread' [-Wunused-parameter]
+                            const uint32_t file, const uint32_t thread) {
+                                                                ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr.h:82:40: warning: unused parameter 'file' [-Wunused-parameter]
+  virtual void freeMMAP(const uint32_t file) {
+                                       ^
+/home/sabbir/sst-elements-org/ariel/arielmemmgr_malloc.cc:122:35: warning: comparison of integers of different signs: 'std::deque::size_type' (aka 'unsigned long') and 'int' [-Wsign-compare]
+  return freePages[level]->size() >= pageCount;
+         ~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~~~~~~~~
+15 warnings generated.

@@ -13,17 +13,12 @@
 // information, see the LICENSE file in the top level directory of the
 // distribution.
 
-
-#include <sst/core/sst_config.h>
 #include "arielevent.h"
+#include <sst/core/sst_config.h>
 
 using namespace SST;
 using namespace SST::ArielComponent;
 
-ArielEvent::ArielEvent() {
-}
+ArielEvent::ArielEvent() = default;
 
-ArielEvent::~ArielEvent() {
-}
-
-
+ArielEvent::~ArielEvent() = default;

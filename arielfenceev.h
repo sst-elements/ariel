@@ -13,7 +13,6 @@
 // information, see the LICENSE file in the top level directory of the
 // distribution.
 
-
 #ifndef _H_SST_ARIEL_FENCE_EVENT
 #define _H_SST_ARIEL_FENCE_EVENT
 
@@ -26,12 +25,11 @@ namespace ArielComponent {
 
 class ArielFenceEvent : public ArielEvent {
 
-    public:
-        ArielEventType getEventType() const { return FENCE; }
-
+public:
+  ArielEventType getEventType() const { return FENCE; }
 };
 
-}
-}
+} // namespace ArielComponent
+} // namespace SST
 
 #endif

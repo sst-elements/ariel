@@ -13,43 +13,39 @@
 // information, see the LICENSE file in the top level directory of the
 // distribution.
 
-
 #ifndef _H_SST_ARIEL_EVENT
 #define _H_SST_ARIEL_EVENT
-
-
 
 namespace SST {
 namespace ArielComponent {
 
 enum ArielEventType {
-    READ_ADDRESS,
-    WRITE_ADDRESS,
-    START_DMA_TRANSFER,
-    WAIT_ON_DMA_TRANSFER,
-    CORE_EXIT,
-    NOOP,
-    MALLOC,
-    MMAP,
-    FREE,
-    SWITCH_POOL,
-    FLUSH,
-    FENCE,
+  READ_ADDRESS,
+  WRITE_ADDRESS,
+  START_DMA_TRANSFER,
+  WAIT_ON_DMA_TRANSFER,
+  CORE_EXIT,
+  NOOP,
+  MALLOC,
+  MMAP,
+  FREE,
+  SWITCH_POOL,
+  FLUSH,
+  FENCE,
 #ifdef HAVE_CUDA
-    GPU
+  GPU
 #endif
 };
 
 class ArielEvent {
 
-    public:
-        ArielEvent();
-        virtual ~ArielEvent();
-        virtual ArielEventType getEventType() const = 0;
-
+public:
+  ArielEvent();
+  virtual ~ArielEvent();
+  virtual ArielEventType getEventType() const = 0;
 };
 
-}
-}
+} // namespace ArielComponent
+} // namespace SST
 
 #endif

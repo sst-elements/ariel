@@ -16,23 +16,23 @@
 #ifndef _ariel_H
 #define _ariel_H
 
-#include <sst/core/sst_types.h>
-#include <sst/core/event.h>
 #include <sst/core/component.h>
+#include <sst/core/event.h>
 #include <sst/core/link.h>
+#include <sst/core/sst_types.h>
 #include <sst/core/timeConverter.h>
 
 #include <sst/core/output.h>
 
 #include <cstring>
-#include <string>
 #include <fstream>
-#include <sstream>
 #include <map>
+#include <sstream>
+#include <string>
 
-#include <stdio.h>
-#include <stdint.h>
 #include <poll.h>
+#include <stdint.h>
+#include <stdio.h>
 
 #include "arielcore.h"
 
@@ -42,34 +42,33 @@ namespace SST {
 namespace ArielComponent {
 
 class Ariel : public SST::Component {
-    public:
-        Ariel(SST::ComponentId_t id, SST::Params& params);
+public:
+  Ariel(SST::ComponentId_t id, SST::Params &params);
 
-        void setup()  { }
-        void finish();
+  void setup() {}
+  void finish();
 
-        void handleEvent(SST::Event* event);
+  void handleEvent(SST::Event *event);
 
-    private:
-        Ariel();  // for serialization only
-        Ariel(const Ariel&); // do not implement
-        void operator=(const Ariel&); // do not implement
+private:
+  Ariel();                       // for serialization only
+  Ariel(const Ariel &);          // do not implement
+  void operator=(const Ariel &); // do not implement
 
-        virtual bool tick( SST::Cycle_t );
-        int create_pinchild(char* prog_binary, char** arg_list);
+  virtual bool tick(SST::Cycle_t);
+  int create_pinchild(char *prog_binary, char **arg_list);
 
-        uint64_t max_inst;
-        char* named_pipe;
-        int* pipe_id;
-        std::string user_binary;
-        Output* output;
+  uint64_t max_inst;
+  char *named_pipe;
+  int *pipe_id;
+  std::string user_binary;
+  Output *output;
 
-        ArielCore** cores;
-        uint32_t core_count;
-        SST::Link** cache_link;
-
+  ArielCore **cores;
+  uint32_t core_count;
+  SST::Link **cache_link;
 };
 
-}
-}
+} // namespace ArielComponent
+} // namespace SST
 #endif /* _ariel_H */

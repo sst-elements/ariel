@@ -13,7 +13,6 @@
 // information, see the LICENSE file in the top level directory of the
 // distribution.
 
-
 #ifndef _H_SST_ARIEL_EXIT_EVENT
 #define _H_SST_ARIEL_EXIT_EVENT
 
@@ -26,16 +25,13 @@ namespace ArielComponent {
 
 class ArielExitEvent : public ArielEvent {
 
-    public:
-        ArielExitEvent() {}
-        ~ArielExitEvent() {}
-        ArielEventType getEventType() const {
-                return CORE_EXIT;
-        }
-
+public:
+  ArielExitEvent() {}
+  ~ArielExitEvent() {}
+  ArielEventType getEventType() const { return CORE_EXIT; }
 };
 
-}
-}
+} // namespace ArielComponent
+} // namespace SST
 
 #endif

@@ -13,7 +13,6 @@
 // information, see the LICENSE file in the top level directory of the
 // distribution.
 
-
 #ifndef _H_SST_ARIEL_FREE_EVENT
 #define _H_SST_ARIEL_FREE_EVENT
 
@@ -26,19 +25,18 @@ namespace ArielComponent {
 
 class ArielFreeEvent : public ArielEvent {
 
-    public:
-        ArielFreeEvent(uint64_t vAddr) : virtualAddress(vAddr) {}
-        ~ArielFreeEvent() {}
+public:
+  ArielFreeEvent(uint64_t vAddr) : virtualAddress(vAddr) {}
+  ~ArielFreeEvent() {}
 
-        ArielEventType getEventType() const { return FREE; }
-        uint64_t getVirtualAddress() const { return virtualAddress; }
+  ArielEventType getEventType() const { return FREE; }
+  uint64_t getVirtualAddress() const { return virtualAddress; }
 
-    protected:
-        const uint64_t virtualAddress;
-
+protected:
+  const uint64_t virtualAddress;
 };
 
-}
-}
+} // namespace ArielComponent
+} // namespace SST
 
 #endif

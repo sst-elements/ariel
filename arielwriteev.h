@@ -13,7 +13,6 @@
 // information, see the LICENSE file in the top level directory of the
 // distribution.
 
-
 #ifndef _H_SST_ARIEL_WRITE_EVENT
 #define _H_SST_ARIEL_WRITE_EVENT
 
@@ -26,45 +25,34 @@ namespace ArielComponent {
 
 class ArielWriteEvent : public ArielEvent {
 
-    public:
-        ArielWriteEvent(uint64_t wAddr, uint32_t length, const uint8_t* payloadData) :
-                writeAddress(wAddr), writeLength(length) {
+public:
+  ArielWriteEvent(uint64_t wAddr, uint32_t length, const uint8_t *payloadData)
+      : writeAddress(wAddr), writeLength(length) {
 
-                payload = new uint8_t[length];
+    payload = new uint8_t[length];
 
-                for( int i = 0; i < length; ++i ) {
-                	payload[i] = payloadData[i];
-                }
-        }
+    for (int i = 0; i < length; ++i) {
+      payload[i] = payloadData[i];
+    }
+  }
 
-        ~ArielWriteEvent() {
-        	delete[] payload;
-        }
+  ~ArielWriteEvent() { delete[] payload; }
 
-        ArielEventType getEventType() const {
-                return WRITE_ADDRESS;
-        }
+  ArielEventType getEventType() const { return WRITE_ADDRESS; }
 
-        uint64_t getAddress() const {
-                return writeAddress;
-        }
+  uint64_t getAddress() const { return writeAddress; }
 
-        uint32_t getLength() const {
-                return writeLength;
-        }
+  uint32_t getLength() const { return writeLength; }
 
-        uint8_t* getPayload() const {
-        		return payload;
-        }
+  uint8_t *getPayload() const { return payload; }
 
-    private:
-        const uint64_t writeAddress;
-        const uint32_t writeLength;
-              uint8_t* payload;
-
+private:
+  const uint64_t writeAddress;
+  const uint32_t writeLength;
+  uint8_t *payload;
 };
 
-}
-}
+} // namespace ArielComponent
+} // namespace SST
 
 #endif
