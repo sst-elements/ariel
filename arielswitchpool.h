@@ -1,8 +1,8 @@
-// Copyright 2009-2019 NTESS. Under the terms
+// Copyright 2009-2020 NTESS. Under the terms
 // of Contract DE-NA0003525 with NTESS, the U.S.
 // Government retains certain rights in this software.
 //
-// Copyright (c) 2009-2019, NTESS
+// Copyright (c) 2009-2020, NTESS
 // All rights reserved.
 //
 // Portions are copyright of other developers:
@@ -22,30 +22,30 @@
 using namespace SST;
 
 namespace SST {
-    namespace ArielComponent {
+namespace ArielComponent {
 
-        class ArielSwitchPoolEvent : public ArielEvent {
+class ArielSwitchPoolEvent : public ArielEvent {
 
-        public:
-            ArielSwitchPoolEvent(uint32_t newPool) : pool(newPool) {
-            }
+    public:
+        ArielSwitchPoolEvent(uint32_t newPool) : pool(newPool) {
+        }
 
-            ~ArielSwitchPoolEvent() {}
+        ~ArielSwitchPoolEvent() {}
 
-            ArielEventType getEventType() const {
+        ArielEventType getEventType() const {
                 return SWITCH_POOL;
-            };
-
-            uint32_t getPool() const {
-                return pool;
-            }
-
-        private:
-            const uint32_t pool;
-
         };
 
-    }
+        uint32_t getPool() const {
+                return pool;
+        }
+
+    private:
+        const uint32_t pool;
+
+};
+
+}
 }
 
 #endif

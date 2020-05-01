@@ -1,8 +1,8 @@
-// Copyright 2009-2019 NTESS. Under the terms
+// Copyright 2009-2020 NTESS. Under the terms
 // of Contract DE-NA0003525 with NTESS, the U.S.
 // Government retains certain rights in this software.
 //
-// Copyright (c) 2009-2019, NTESS
+// Copyright (c) 2009-2020, NTESS
 // All rights reserved.
 //
 // Portions are copyright of other developers:
@@ -16,9 +16,9 @@
 #include <stdio.h>
 
 void ariel_enable() {
-    printf("ARIEL: ENABLE called in Ariel API.\n");
+	printf("ARIEL: ENABLE called in Ariel API.\n");
 }
 
 void ariel_fence() {
-    printf("ARIEL: FENCE called in Ariel API.\n");
+      printf("ARIEL: FENCE called in Ariel API.\n");
 }

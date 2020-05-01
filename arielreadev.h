@@ -1,8 +1,8 @@
-// Copyright 2009-2019 NTESS. Under the terms
+// Copyright 2009-2020 NTESS. Under the terms
 // of Contract DE-NA0003525 with NTESS, the U.S.
 // Government retains certain rights in this software.
 //
-// Copyright (c) 2009-2019, NTESS
+// Copyright (c) 2009-2020, NTESS
 // All rights reserved.
 //
 // Portions are copyright of other developers:
@@ -22,37 +22,37 @@
 using namespace SST;
 
 namespace SST {
-    namespace ArielComponent {
+namespace ArielComponent {
 
-        class ArielReadEvent : public ArielEvent {
+class ArielReadEvent : public ArielEvent {
 
-        public:
-            ArielReadEvent(uint64_t rAddr, uint32_t length) :
+    public:
+        ArielReadEvent(uint64_t rAddr, uint32_t length) :
                 readAddress(rAddr), readLength(length) {
-            }
+        }
 
-            ~ArielReadEvent() {
-            }
+        ~ArielReadEvent() {
+        }
 
-            ArielEventType getEventType() const {
+        ArielEventType getEventType() const {
                 return READ_ADDRESS;
-            }
+        }
 
-            uint64_t getAddress() const {
+        uint64_t getAddress() const {
                 return readAddress;
-            }
+        }
 
-            uint32_t getLength() const {
+        uint32_t getLength() const {
                 return readLength;
-            }
+        }
 
-        private:
-            const uint64_t readAddress;
-            const uint32_t readLength;
+    private:
+        const uint64_t readAddress;
+        const uint32_t readLength;
 
-        };
+};
 
-    }
+}
 }
 
 #endif

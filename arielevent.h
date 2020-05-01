@@ -1,8 +1,8 @@
-// Copyright 2009-2019 NTESS. Under the terms
+// Copyright 2009-2020 NTESS. Under the terms
 // of Contract DE-NA0003525 with NTESS, the U.S.
 // Government retains certain rights in this software.
 //
-// Copyright (c) 2009-2019, NTESS
+// Copyright (c) 2009-2020, NTESS
 // All rights reserved.
 //
 // Portions are copyright of other developers:
@@ -18,36 +18,38 @@
 #define _H_SST_ARIEL_EVENT
 
 
+
 namespace SST {
-    namespace ArielComponent {
+namespace ArielComponent {
 
-        enum ArielEventType {
-            READ_ADDRESS,
-            WRITE_ADDRESS,
-            START_DMA_TRANSFER,
-            WAIT_ON_DMA_TRANSFER,
-            CORE_EXIT,
-            NOOP,
-            MALLOC,
-            MMAP,
-            FREE,
-            SWITCH_POOL,
-            FLUSH,
-            FENCE
-        };
+enum ArielEventType {
+    READ_ADDRESS,
+    WRITE_ADDRESS,
+    START_DMA_TRANSFER,
+    WAIT_ON_DMA_TRANSFER,
+    CORE_EXIT,
+    NOOP,
+    MALLOC,
+    MMAP,
+    FREE,
+    SWITCH_POOL,
+    FLUSH,
+    FENCE,
+#ifdef HAVE_CUDA
+    GPU
+#endif
+};
 
-        class ArielEvent {
+class ArielEvent {
 
-        public:
-            ArielEvent();
+    public:
+        ArielEvent();
+        virtual ~ArielEvent();
+        virtual ArielEventType getEventType() const = 0;
 
-            virtual ~ArielEvent();
+};
 
-            virtual ArielEventType getEventType() const = 0;
-
-        };
-
-    }
+}
 }
 
 #endif

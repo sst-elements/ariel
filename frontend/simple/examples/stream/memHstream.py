@@ -14,8 +14,8 @@ L2_0     L2_1     L2_2     L2_3     L2_4     L2_5     L2_6     L2_7
                          Main Memory (DRAMSIM)
 """
 
+import sst 
 import os
-import sst
 
 ## Flags
 memDebug = 0
@@ -33,7 +33,10 @@ corecount = 8
 os.environ['SIM_DESC'] = 'EIGHT_CORES'
 os.environ['OMP_NUM_THREADS'] = str(corecount)
 
-sst_root = os.getenv("SST_ROOT")
+sst_root = os.getenv( "SST_ROOT" )
+app = sst_root + "/sst-elements/src/frontend/simple/examples/stream/stream"
+if not os.path.exists(app):
+    app = os.getenv( "OMP_EXE" )
 
 ## Application Info:
 ## Executable  -> exe_file
@@ -52,110 +55,125 @@ sst_root = os.getenv("SST_ROOT")
 ariel = sst.Component("A0", "ariel.ariel")
 ## ariel.addParams(AppArgs)
 ariel.addParams({
-    "verbose": "0",
-    "maxcorequeue": "256",
-    "maxissuepercycle": "2",
-    "pipetimeout": "0",
-    "executable": sst_root + "/sst-elements/src/sst/elements/ariel/frontend/simple/examples/stream/stream",
-    "arielinterceptcalls": "1",
-    "launchparamcount": 1,
-    "launchparam0": "-ifeellucky",
-    "arielmode": "1",
-    "corecount": corecount,
-    "defaultlevel": defaultLevel,
+   "verbose"             : "0",
+   "maxcorequeue"        : "256",
+   "maxissuepercycle"    : "2",
+   "pipetimeout"         : "0",
+   "executable"          : app,
+   "arielinterceptcalls" : "1",
+   "launchparamcount"    : 1,
+   "launchparam0"        : "-ifeellucky",
+   "arielmode"           : "1",
+   "corecount"           : corecount,
+   "defaultlevel"        : defaultLevel,
 })
 
 ariel.setSubComponent("memmgr", "ariel.MemoryManagerSimple")
 
-
 ## MemHierarchy 
 
 def genMemHierarchy(cores):
-    membus = sst.Component("membus", "memHierarchy.Bus")
-    membus.addParams({
-        "bus_frequency": cacheFrequency,
-    })
+   
+   membus = sst.Component("membus", "memHierarchy.Bus")
+   membus.addParams({
+       "bus_frequency" : cacheFrequency,
+   })
 
-    memory = sst.Component("memory", "memHierarchy.MemController")
-    memory.addParams({
-        "range_start": "0",
-        "coherence_protocol": coherenceProtocol,
-        "debug": memDebug,
-        "clock": "1Ghz",
-        "verbose": 2,
-        "backend.device_ini": "DDR3_micron_32M_8B_x4_sg125.ini",
-        "backend.system_ini": "system.ini",
-        "backend.mem_size": "512MiB",
-        "request_width": cacheLineSize,
-        "backend": "memHierarchy.dramsim",
-        "device_ini": "DDR3_micron_32M_8B_x4_sg125.ini",
-        "system_ini": "system.ini"
-    })
+   memctrl = sst.Component("memory", "memHierarchy.MemController")
+   memctrl.addParams({
+        "debug"                 : memDebug,
+        "clock"                 : "1Ghz",
+        "verbose"               : 2,
+        "request_width"         : cacheLineSize,
+   })
 
-    for core in range(cores):
-        l1 = sst.Component("l1cache_%d" % core, "memHierarchy.Cache")
-        l1.addParams({
-            "cache_frequency": cacheFrequency,
-            "cache_size": "32KB",
-            "cache_line_size": cacheLineSize,
-            "associativity": "8",
-            "access_latency_cycles": "4",
-            "coherence_protocol": coherenceProtocol,
-            "replacement_policy": rplPolicy,
-            "L1": "1",
-            "debug": memDebug,
-            "debug_level": memDebugLevel,
-            "verbose": 2,
-        })
+   memory = memctrl.setSubComponent("backend", "memHierarchy.timingDRAM")
+   memory.addParams({
+        "mem_size"      : "512MiB",
+        "id" : 0,
+        "addrMapper" : "memHierarchy.simpleAddrMapper",
+        "addrMapper.interleave_size" : "64B",
+        "addrMapper.row_size" : "1KiB",
+        "clock" : "1GHz",
+        "channels" : 1,
+        "channel.numRanks" : 2,
+        "channel.rank.numBanks" : 8,
+        "channel.transaction_Q_size" : 32,
+        "channel.rank.bank.CL" : 10,
+        "channel.rank.bank.CL_WR" : 12,
+        "channel.rank.bank.RCD" : 10,
+        "channel.rank.bank.TRP" : 14,
+        "channel.rank.bank.dataCycles" : 2,
+        "channel.rank.bank.pagePolicy" : "memHierarchy.simplePagePolicy",
+        "channel.rank.bank.transactionQ" : "memHierarchy.reorderTransactionQ",
+        "channel.rank.bank.pagePolicy.close" : 1,
+   })
 
-        l2 = sst.Component("l2cache_%d" % core, "memHierarchy.Cache")
-        l2.addParams({
-            "cache_frequency": cacheFrequency,
-            "cache_size": "256 KB",
-            "cache_line_size": cacheLineSize,
-            "associativity": "8",
-            "access_latency_cycles": "10",
-            "coherence_protocol": coherenceProtocol,
-            "replacement_policy": rplPolicy,
-            "L1": "0",
-            "debug": memDebug,
-            "debug_level": memDebugLevel,
-            "verbose": 2,
-            "mshr_num_entries": 16,
-            "mshr_latency_cycles": 2,
-        })
+   for core in range (cores):
+       l1 = sst.Component("l1cache_%d"%core, "memHierarchy.Cache")
+       l1.addParams({
+            "cache_frequency"       : cacheFrequency,
+            "cache_size"            : "32KB",
+            "cache_line_size"       : cacheLineSize,
+            "associativity"         : "8",
+            "access_latency_cycles" : "4",
+            "coherence_protocol"    : coherenceProtocol,
+            "replacement_policy"    : rplPolicy,
+            "L1"                    : "1",
+            "debug"                 : memDebug,  
+            "debug_level"           : memDebugLevel, 
+            "verbose"               : 2,
+       })
 
-        ## SST Links
-        # Ariel -> L1(PRIVATE) -> L2(PRIVATE)  -> L3 (SHARED) -> DRAM 
-        ArielL1Link = sst.Link("cpu_cache_%d" % core)
-        ArielL1Link.connect((ariel, "cache_link_%d" % core, busLat), (l1, "high_network_0", busLat))
-        L1L2Link = sst.Link("l1_l2_%d" % core)
-        L1L2Link.connect((l1, "low_network_0", busLat), (l2, "high_network_0", busLat))
-        L2MembusLink = sst.Link("l2_membus_%d" % core)
-        L2MembusLink.connect((l2, "low_network_0", busLat), (membus, "high_network_%d" % core, busLat))
+       l2 = sst.Component("l2cache_%d"%core, "memHierarchy.Cache")
+       l2.addParams({
+            "cache_frequency"       : cacheFrequency,
+            "cache_size"            : "256 KB",
+            "cache_line_size"       : cacheLineSize,
+            "associativity"         : "8",
+            "access_latency_cycles" : "10",
+            "coherence_protocol"    : coherenceProtocol,
+            "replacement_policy"    : rplPolicy,
+            "L1"                    : "0",
+            "debug"                 : memDebug,  
+            "debug_level"           : memDebugLevel, 
+            "verbose"               : 2,
+            "mshr_num_entries"      : 16,
+            "mshr_latency_cycles"   : 2,
+       })
+       
+       ## SST Links
+       # Ariel -> L1(PRIVATE) -> L2(PRIVATE)  -> L3 (SHARED) -> DRAM 
+       ArielL1Link = sst.Link("cpu_cache_%d"%core)
+       ArielL1Link.connect((ariel, "cache_link_%d"%core, busLat), (l1, "high_network_0", busLat))
+       L1L2Link = sst.Link("l1_l2_%d"%core)
+       L1L2Link.connect((l1, "low_network_0", busLat), (l2, "high_network_0", busLat))
+       L2MembusLink = sst.Link("l2_membus_%d"%core)
+       L2MembusLink.connect((l2, "low_network_0", busLat), (membus, "high_network_%d"%core, busLat))
+   
 
-    l3 = sst.Component("L3cache", "memHierarchy.Cache")
-    l3.addParams({
-        "cache_frequency": cacheFrequency,
-        "cache_size": "8 MB",
-        "cache_line_size": cacheLineSize,
-        "associativity": "8",
-        "access_latency_cycles": "20",
-        "coherence_protocol": coherenceProtocol,
-        "replacement_policy": rplPolicy,
-        "L1": "0",
-        "debug": memDebug,
-        "debug_level": memDebugLevel,
-        "mshr_num_entries": "16",
-        "mshr_latency_cycles": 2,
-        "verbose": 2,
-    })
+   l3 = sst.Component("L3cache", "memHierarchy.Cache")
+   l3.addParams({
+        "cache_frequency"       : cacheFrequency,
+        "cache_size"            : "8 MB",
+        "cache_line_size"       : cacheLineSize,
+        "associativity"         : "8",
+        "access_latency_cycles" : "20",
+        "coherence_protocol"    : coherenceProtocol,
+        "replacement_policy"    : rplPolicy,
+        "L1"                    : "0",
+        "debug"                 : memDebug,  
+        "debug_level"           : memDebugLevel, 
+        "mshr_num_entries"      : "16",
+        "mshr_latency_cycles"   : 2,
+        "verbose"               : 2,
+   })
 
-    # Bus to L3 and L3 <-> MM
-    BusL3Link = sst.Link("bus_L3")
-    BusL3Link.connect((membus, "low_network_0", busLat), (l3, "high_network_0", busLat))
-    L3MemCtrlLink = sst.Link("L3MemCtrl")
-    L3MemCtrlLink.connect((l3, "low_network_0", busLat), (memory, "direct_link", busLat))
+   # Bus to L3 and L3 <-> MM
+   BusL3Link = sst.Link("bus_L3")
+   BusL3Link.connect((membus, "low_network_0", busLat), (l3, "high_network_0", busLat))
+   L3MemCtrlLink = sst.Link("L3MemCtrl")
+   L3MemCtrlLink.connect((l3, "low_network_0", busLat), (memctrl, "direct_link", busLat))
 
+genMemHierarchy(corecount)        
 
-genMemHierarchy(corecount)

@@ -1,8 +1,8 @@
-// Copyright 2009-2019 NTESS. Under the terms
+// Copyright 2009-2020 NTESS. Under the terms
 // of Contract DE-NA0003525 with NTESS, the U.S.
 // Government retains certain rights in this software.
-// 
-// Copyright (c) 2009-2019, NTESS
+//
+// Copyright (c) 2009-2020, NTESS
 // All rights reserved.
 //
 // Portions are copyright of other developers:
@@ -19,19 +19,19 @@
 
 extern char **environ;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
 
-    printf("SST Environment Printer\n");
+	printf("SST Environment Printer\n");
 
-    int next_env_index = 0;
+	int next_env_index = 0;
 
-    while (NULL != environ[next_env_index]) {
-        char *key = strtok(environ[next_env_index], "=");
-        char *value = strtok(NULL, "=");
+	while( NULL != environ[next_env_index] ) {
+		char* key   = strtok(environ[next_env_index], "=");
+		char* value = strtok(NULL, "=");
 
-        printf("%5d %30s = \"%s\"\n", next_env_index, key, value);
-        next_env_index++;
-    }
+		printf("%5d %30s = \"%s\"\n", next_env_index, key, value);
+		next_env_index++;
+	}
 
-    return 0;
+	return 0;
 }

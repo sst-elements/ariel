@@ -1,8 +1,8 @@
-// Copyright 2009-2019 NTESS. Under the terms
+// Copyright 2009-2020 NTESS. Under the terms
 // of Contract DE-NA0003525 with NTESS, the U.S.
 // Government retains certain rights in this software.
 //
-// Copyright (c) 2009-2019, NTESS
+// Copyright (c) 2009-2020, NTESS
 // All rights reserved.
 //
 // Portions are copyright of other developers:
@@ -22,77 +22,65 @@
 using namespace SST;
 
 namespace SST {
-    namespace ArielComponent {
+namespace ArielComponent {
 
-        class ArielAllocateEvent : public ArielEvent {
+class ArielAllocateEvent : public ArielEvent {
 
-        public:
-            ArielAllocateEvent(uint64_t vAddr, uint64_t len, uint32_t lev, uint64_t ip) :
+    public:
+        ArielAllocateEvent(uint64_t vAddr, uint64_t len, uint32_t lev, uint64_t ip) :
                 virtualAddress(vAddr),
                 allocateLength(len),
                 level(lev),
                 instPtr(ip) {
 
-            }
+        }
 
-            ~ArielAllocateEvent() {}
+        ~ArielAllocateEvent() {}
+        ArielEventType getEventType() const { return MALLOC; }
+        uint64_t getVirtualAddress() const { return virtualAddress; }
+        uint64_t getAllocationLength() const { return allocateLength; }
+        uint32_t getAllocationLevel() const { return level; }
+        uint64_t getInstructionPointer() const { return instPtr; }
 
-            ArielEventType getEventType() const { return MALLOC; }
+    protected:
+        uint64_t virtualAddress;
+        uint64_t allocateLength;
+        uint32_t level;
+        uint64_t instPtr;
 
-            uint64_t getVirtualAddress() const { return virtualAddress; }
+};
 
-            uint64_t getAllocationLength() const { return allocateLength; }
+class ArielMmapEvent : public ArielEvent {
 
-            uint32_t getAllocationLevel() const { return level; }
-
-            uint64_t getInstructionPointer() const { return instPtr; }
-
-        protected:
-            uint64_t virtualAddress;
-            uint64_t allocateLength;
-            uint32_t level;
-            uint64_t instPtr;
-
-        };
-
-        class ArielMmapEvent : public ArielEvent {
-
-        public:
-            ArielMmapEvent(uint32_t fileID, uint64_t vAddr, uint64_t len, uint32_t lev, uint64_t ip)
-                :
+    public:
+        ArielMmapEvent(uint32_t fileID, uint64_t vAddr, uint64_t len, uint32_t lev, uint64_t ip) :
                 FileID(fileID),
                 virtualAddress(vAddr),
                 allocateLength(len),
                 level(lev),
                 instPtr(ip) {
 
-            }
+        }
 
-            ~ArielMmapEvent() {}
+        ~ArielMmapEvent() {}
+        ArielEventType getEventType() const { return MMAP; }
+        uint64_t getVirtualAddress() const { return virtualAddress; }
+        uint64_t getAllocationLength() const { return allocateLength; }
+        uint32_t getAllocationLevel() const { return level; }
+        uint64_t getInstructionPointer() const { return instPtr; }
+        uint32_t getFileID() const { return FileID; }
 
-            ArielEventType getEventType() const { return MMAP; }
+    protected:
+        uint64_t virtualAddress;
+        uint64_t allocateLength;
+        uint32_t level;
+        uint64_t instPtr;
+        uint32_t FileID;
 
-            uint64_t getVirtualAddress() const { return virtualAddress; }
-
-            uint64_t getAllocationLength() const { return allocateLength; }
-
-            uint32_t getAllocationLevel() const { return level; }
-
-            uint64_t getInstructionPointer() const { return instPtr; }
-
-            uint32_t getFileID() const { return FileID; }
-
-        protected:
-            uint64_t virtualAddress;
-            uint64_t allocateLength;
-            uint32_t level;
-            uint64_t instPtr;
-            uint32_t FileID;
-
-        };
+};
 
 
-    }
+}
 }
 
 #endif

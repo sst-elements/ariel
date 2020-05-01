@@ -1,8 +1,8 @@
-// Copyright 2009-2019 NTESS. Under the terms
+// Copyright 2009-2020 NTESS. Under the terms
 // of Contract DE-NA0003525 with NTESS, the U.S.
 // Government retains certain rights in this software.
 //
-// Copyright (c) 2009-2019, NTESS
+// Copyright (c) 2009-2020, NTESS
 // All rights reserved.
 //
 // Portions are copyright of other developers:
@@ -51,166 +51,217 @@
 #include "ariel_shmem.h"
 #include "arieltracegen.h"
 
+#ifdef HAVE_CUDA
+#include "arielgpuev.h"
+#endif
+
 using namespace SST;
 using namespace SST::Interfaces;
 using namespace SST::ArielComponent;
 
 namespace SST {
-    namespace ArielComponent {
+namespace ArielComponent {
 
 
-        class ArielCore : public ComponentExtension {
+class ArielCore : public ComponentExtension {
 
-        public:
-            ArielCore(ComponentId_t id, ArielTunnel *tunnel, uint32_t thisCoreID,
-                      uint32_t maxPendTans, Output *out,
-                      uint32_t maxIssuePerCyc, uint32_t maxQLen, uint64_t cacheLineSz,
-                      ArielMemoryManager *memMgr, const uint32_t perform_address_checks,
-                      Params &params);
+    public:
+        ArielCore(ComponentId_t id, ArielTunnel *tunnel,
+#ifdef HAVE_CUDA
+            GpuReturnTunnel *tunnelR, GpuDataTunnel *tunnelD,
+#endif
+            uint32_t thisCoreID, uint32_t maxPendTans, Output* out,
+            uint32_t maxIssuePerCyc, uint32_t maxQLen, uint64_t cacheLineSz,
+            ArielMemoryManager* memMgr, const uint32_t perform_address_checks, Params& params);
+        ~ArielCore();
 
-            ~ArielCore();
+        bool isCoreHalted() const;
+        bool isCoreStalled() const;
+#ifdef HAVE_CUDA
+        cudaMemcpyKind getKind() const;
+        bool getMidTransfer() const;
+        size_t getTotalTransfer() const;
+        size_t getPageAckTransfer() const;
+        size_t getPageTransfer() const;
+        size_t getAckTransfer() const;
+        size_t getRemainingTransfer() const;
+        size_t getRemainingPageTransfer() const;
+        uint64_t getBaseAddress() const;
+        uint64_t getCurrentAddress() const;
+        uint8_t* getDataAddress() const;
+        uint8_t* getBaseDataAddress() const;
+        int getOpenTransactions() const;
+        void setMidTransfer(bool midTx);
+        void setKind(cudaMemcpyKind memcpyKind);
+        void setTotalTransfer(size_t tx);
+        void setPageTransfer(size_t tx);
+        void setPageAckTransfer(size_t tx);
+        void setRemainingPageTransfer(size_t tx);
+        void setAckTransfer(size_t tx);
+        void setRemainingTransfer(size_t tx);
+        void setBaseAddress(uint64_t virtAddress);
+        void setCurrentAddress(uint64_t virtAddress);
+        void setDataAddress(uint8_t* virtAddress);
+        void setBaseDataAddress(uint8_t* virtAddress);
+        void setPhysicalAddresses(SST::Event *ev);
+        bool isGpuEx() const;
+        void gpu();
+#endif
+        bool isCoreFenced() const;
+        bool hasDrainCompleted() const;
+        void tick();
+        void halt();
+        void stall();
+        void fence();
+        void unfence();
+        void finishCore();
+        void createReadEvent(uint64_t addr, uint32_t size);
+        void createWriteEvent(uint64_t addr, uint32_t size, const uint8_t* payload);
+        void createAllocateEvent(uint64_t vAddr, uint64_t length, uint32_t level, uint64_t ip);
+        void createMmapEvent(uint32_t fileID, uint64_t vAddr, uint64_t length, uint32_t level, uint64_t instPtr);
+        void createNoOpEvent();
+        void createFreeEvent(uint64_t vAddr);
+        void createExitEvent();
+        void createFlushEvent(uint64_t vAddr);
+        void createFenceEvent();
+        void createSwitchPoolEvent(uint32_t pool);
 
-            bool isCoreHalted() const;
+        void setFilePath(std::string fp) {
+          getcwd(file_path, sizeof(file_path));
+          strcat(file_path, "/");
+          strcat(file_path, fp.c_str());
+          if (!(access(file_path, F_OK) == 0)) {
+            strcpy(file_path, fp.c_str());
+          }
+      }
 
-            bool isCoreStalled() const;
+        void setCacheLink(SimpleMem* newCacheLink);
 
-            bool isCoreFenced() const;
+#ifdef HAVE_CUDA
+        void createGpuEvent(GpuApi_t API, CudaArguments CA);
+        void setGpu() { gpu_enabled = true; }
+        void setGpuLink(Link* gpulink);
+#endif
 
-            bool hasDrainCompleted() const;
+        void handleEvent(SimpleMem::Request* event);
+        void handleReadRequest(ArielReadEvent* wEv);
+        void handleWriteRequest(ArielWriteEvent* wEv);
+        void handleAllocationEvent(ArielAllocateEvent* aEv);
+        void handleMmapEvent(ArielMmapEvent* aEv);
+        void handleFreeEvent(ArielFreeEvent* aFE);
+        void handleSwitchPoolEvent(ArielSwitchPoolEvent* aSPE);
+        void handleFlushEvent(ArielFlushEvent *flEv);
+        void handleFenceEvent(ArielFenceEvent *fEv);
 
-            void tick();
+#ifdef HAVE_CUDA
+        void handleGpuEvent(ArielGpuEvent* gEv);
+        void handleGpuAckEvent(SST::Event* e);
+        void handleGpuMemcpy(ArielGpuEvent* gEv);
+#endif
 
-            void halt();
+        // interrupt handlers
+        bool handleInterrupt(ArielMemoryManager::InterruptAction action);
 
-            void stall();
+        void commitReadEvent(const uint64_t address, const uint64_t virtAddr, const uint32_t length);
+        void commitWriteEvent(const uint64_t address, const uint64_t virtAddr, const uint32_t length, const uint8_t* payload);
+        void commitFlushEvent(const uint64_t address, const uint64_t virtAddr, const uint32_t length);
 
-            void fence();
+        // Setting the max number of instructions to be simulated
+        void setMaxInsts(uint64_t i){max_insts=i;}
 
-            void unfence();
+        void printCoreStatistics();
+        void printTraceEntry(const bool isRead, const uint64_t address, const uint32_t length);
 
-            void finishCore();
+    private:
+        bool processNextEvent();
+        bool refillQueue();
 
-            void createReadEvent(uint64_t addr, uint32_t size);
+        bool writePayloads;
+        uint32_t coreID;
+        uint32_t maxPendingTransactions;
 
-            void createWriteEvent(uint64_t addr, uint32_t size, const uint8_t *payload);
+#ifdef HAVE_CUDA
+        size_t totalTransfer;
+        bool gpu_enabled;
+        size_t pageTransfer;
+        size_t ackTransfer;
+        size_t pageAckTransfer;
+        size_t remainingTransfer;
+        size_t remainingPageTransfer;
+        uint64_t baseAddress;
+        uint64_t currentAddress;
+        uint8_t* dataAddress;
+        uint8_t* baseDataAddress;
+        bool midTransfer;
+        std::vector<uint64_t> physicalAddresses;
+        cudaMemcpyKind kind;
+        bool isGpu;
+#endif
 
-            void createAllocateEvent(uint64_t vAddr, uint64_t length, uint32_t level, uint64_t ip);
+        Output* output;
+        std::queue<ArielEvent*>* coreQ;
+        bool isStalled;
+        bool isHalted;
+        bool isFenced;
 
-            void createMmapEvent(uint32_t fileID, uint64_t vAddr, uint64_t length, uint32_t level,
-                                 uint64_t instPtr);
+        SimpleMem* cacheLink;
+        ArielTunnel *tunnel;
 
-            void createNoOpEvent();
+#ifdef HAVE_CUDA
+        Link* GpuLink;
+        GpuReturnTunnel *tunnelR;
+        GpuDataTunnel *tunnelD;
+        std::unordered_map<SimpleMem::Request::id_t, SimpleMem::Request*>* pendingGpuTransactions;
+#endif
 
-            void createFreeEvent(uint64_t vAddr);
+        std::unordered_map<SimpleMem::Request::id_t, SimpleMem::Request*>* pendingTransactions;
+        uint32_t maxIssuePerCycle;
+        uint32_t maxQLength;
+        uint64_t cacheLineSize;
+        ArielMemoryManager* memmgr;
+        const uint32_t verbosity;
+        const uint32_t perform_checks;
+        bool enableTracing;
+        uint64_t currentCycles;
+        bool updateCycle;
+        char file_path[256];
 
-            void createExitEvent();
+        // This indicates the current number of executed instructions by this core
+        uint64_t inst_count;
 
-            void createFlushEvent(uint64_t vAddr);
+        // This indicates the max number of instructions before halting the simulation
+        uint64_t max_insts;
 
-            void createFenceEvent();
+        ArielTraceGenerator* traceGen;
 
-            void createSwitchPoolEvent(uint32_t pool);
+        Statistic<uint64_t>* statReadRequests;
+        Statistic<uint64_t>* statWriteRequests;
+        Statistic<uint64_t>* statFlushRequests;
+        Statistic<uint64_t>* statFenceRequests;
+        Statistic<uint64_t>* statReadRequestSizes;
+        Statistic<uint64_t>* statWriteRequestSizes;
+        Statistic<uint64_t>* statSplitReadRequests;
+        Statistic<uint64_t>* statSplitWriteRequests;
+        Statistic<uint64_t>* statNoopCount;
+        Statistic<uint64_t>* statInstructionCount;
+        Statistic<uint64_t>* statCycles;
+        Statistic<uint64_t>* statActiveCycles;
 
-            void setCacheLink(SimpleMem *newCacheLink);
+        Statistic<uint64_t>* statFPDPIns;
+        Statistic<uint64_t>* statFPDPSIMDIns;
+        Statistic<uint64_t>* statFPDPScalarIns;
+        Statistic<uint64_t>* statFPDPOps;
+        Statistic<uint64_t>* statFPSPIns;
+        Statistic<uint64_t>* statFPSPSIMDIns;
+        Statistic<uint64_t>* statFPSPScalarIns;
+        Statistic<uint64_t>* statFPSPOps;
 
-            void handleEvent(SimpleMem::Request *event);
+        uint32_t pending_transaction_count;
+        uint32_t pending_gpu_transaction_count;
 
-            void handleReadRequest(ArielReadEvent *wEv);
+};
 
-            void handleWriteRequest(ArielWriteEvent *wEv);
-
-            void handleAllocationEvent(ArielAllocateEvent *aEv);
-
-            void handleMmapEvent(ArielMmapEvent *aEv);
-
-            void handleFreeEvent(ArielFreeEvent *aFE);
-
-            void handleSwitchPoolEvent(ArielSwitchPoolEvent *aSPE);
-
-            void handleFlushEvent(ArielFlushEvent *flEv);
-
-            void handleFenceEvent(ArielFenceEvent *fEv);
-
-            // interrupt handler
-            bool handleInterrupt(ArielMemoryManager::InterruptAction action);
-
-            void commitReadEvent(const uint64_t address, const uint64_t virtAddr,
-                                 const uint32_t length);
-
-            void commitWriteEvent(const uint64_t address, const uint64_t virtAddr,
-                                  const uint32_t length, const uint8_t *payload);
-
-            void commitFlushEvent(const uint64_t address, const uint64_t virtAddr,
-                                  const uint32_t length);
-
-            // Setting the max number of instructions to be simulated
-            void setMaxInsts(uint64_t i) { max_insts = i; }
-
-            void printCoreStatistics();
-
-            void printTraceEntry(const bool isRead, const uint64_t address, const uint32_t length);
-
-        private:
-            bool processNextEvent();
-
-            bool refillQueue();
-
-            bool writePayloads;
-            uint32_t coreID;
-            uint32_t maxPendingTransactions;
-            Output *output;
-            std::queue<ArielEvent *> *coreQ;
-            bool isStalled;
-            bool isHalted;
-            bool isFenced;
-            SimpleMem *cacheLink;
-            ArielTunnel *tunnel;
-            std::unordered_map<SimpleMem::Request::id_t, SimpleMem::Request *> *pendingTransactions;
-            uint32_t maxIssuePerCycle;
-            uint32_t maxQLength;
-            uint64_t cacheLineSize;
-            ArielMemoryManager *memmgr;
-            const uint32_t verbosity;
-            const uint32_t perform_checks;
-            bool enableTracing;
-            uint64_t currentCycles;
-            bool updateCycle;
-
-            // This indicates the current number of executed instructions by this core
-            uint64_t inst_count;
-
-            // This indicates the max number of instructions before halting the simulation
-            uint64_t max_insts;
-
-            ArielTraceGenerator *traceGen;
-
-            Statistic <uint64_t> *statReadRequests;
-            Statistic <uint64_t> *statWriteRequests;
-            Statistic <uint64_t> *statFlushRequests;
-            Statistic <uint64_t> *statFenceRequests;
-            Statistic <uint64_t> *statReadRequestSizes;
-            Statistic <uint64_t> *statWriteRequestSizes;
-            Statistic <uint64_t> *statSplitReadRequests;
-            Statistic <uint64_t> *statSplitWriteRequests;
-            Statistic <uint64_t> *statNoopCount;
-            Statistic <uint64_t> *statInstructionCount;
-            Statistic <uint64_t> *statCycles;
-            Statistic <uint64_t> *statActiveCycles;
-
-            Statistic <uint64_t> *statFPDPIns;
-            Statistic <uint64_t> *statFPDPSIMDIns;
-            Statistic <uint64_t> *statFPDPScalarIns;
-            Statistic <uint64_t> *statFPDPOps;
-            Statistic <uint64_t> *statFPSPIns;
-            Statistic <uint64_t> *statFPSPSIMDIns;
-            Statistic <uint64_t> *statFPSPScalarIns;
-            Statistic <uint64_t> *statFPSPOps;
-
-            uint32_t pending_transaction_count;
-
-        };
-
-    }
+}
 }
 
 #endif

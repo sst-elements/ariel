@@ -1,10 +1,10 @@
-// Copyright 2009-2019 NTESS. Under the terms
+// Copyright 2009-2020 NTESS. Under the terms
 // of Contract DE-NA0003525 with NTESS, the U.S.
 // Government retains certain rights in this software.
-// 
-// Copyright (c) 2009-2019, NTESS
+//
+// Copyright (c) 2009-2020, NTESS
 // All rights reserved.
-// 
+//
 // Portions are copyright of other developers:
 // See the file CONTRIBUTORS.TXT in the top level directory
 // the distribution for more information.
@@ -39,39 +39,37 @@
 using namespace std;
 
 namespace SST {
-    namespace ArielComponent {
+namespace ArielComponent {
 
-        class Ariel : public SST::Component {
-        public:
-            Ariel(SST::ComponentId_t id, SST::Params &params);
+class Ariel : public SST::Component {
+    public:
+        Ariel(SST::ComponentId_t id, SST::Params& params);
 
-            void setup() {}
+        void setup()  { }
+        void finish();
 
-            void finish();
+        void handleEvent(SST::Event* event);
 
-            void handleEvent(SST::Event *event);
+    private:
+        Ariel();  // for serialization only
+        Ariel(const Ariel&); // do not implement
+        void operator=(const Ariel&); // do not implement
 
-        private:
-            Ariel();  // for serialization only
-            Ariel(const Ariel &); // do not implement
-            void operator=(const Ariel &); // do not implement
+        virtual bool tick( SST::Cycle_t );
+        int create_pinchild(char* prog_binary, char** arg_list);
 
-            virtual bool tick(SST::Cycle_t);
+        uint64_t max_inst;
+        char* named_pipe;
+        int* pipe_id;
+        std::string user_binary;
+        Output* output;
 
-            int create_pinchild(char *prog_binary, char **arg_list);
+        ArielCore** cores;
+        uint32_t core_count;
+        SST::Link** cache_link;
 
-            uint64_t max_inst;
-            char *named_pipe;
-            int *pipe_id;
-            std::string user_binary;
-            Output *output;
+};
 
-            ArielCore **cores;
-            uint32_t core_count;
-            SST::Link **cache_link;
-
-        };
-
-    }
+}
 }
 #endif /* _ariel_H */
